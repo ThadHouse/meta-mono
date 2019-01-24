@@ -1,0 +1,13 @@
+Only in mono-5.16.0.179/: autom4te.cache
+diff -u -r mono-5.16.0.179.orig/configure.ac mono-5.16.0.179/configure.ac
+--- mono-5.16.0.179.orig/configure.ac	2018-11-26 13:32:40.257412015 +1000
++++ mono-5.16.0.179/configure.ac	2018-11-26 13:43:09.715092564 +1000
+@@ -3172,6 +3172,8 @@
+ 	AC_MSG_CHECKING(for shm_open that works well enough with mmap)
+ 	if test "x$ac_cv_func_shm_open" = "xno" -o "x$ac_cv_func_shm_open_working_with_mmap" = "xno" ; then
+ 		AC_MSG_RESULT(no)
++	elif test "x$cross_compiling" = "xyes"; then
++		AC_MSG_RESULT(cross compiling, assuming yes)
+ 	else
+ 		AC_TRY_RUN([
+ 			#include <sys/mman.h>
